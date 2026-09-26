@@ -24,7 +24,7 @@
 #define HDVer      FileExists(HDUpdExe) ? Trim(StringChange(StringChange(StringChange(GetStringFileInfo(HDUpdExe, PRODUCT_NAME), "HoMM3 HD+", ""), "HoMM3 HD", ""), "Update", "")) : ""
 
 #define MyAppName  "HotA + HD"
-; Куда ведут ярлыки игры: HotA_launcher.exe, HD_Launcher.exe или "h3hota HD.exe"
+; Куда ведёт ярлык игры в меню «Пуск»: HotA_launcher.exe, HD_Launcher.exe или "h3hota HD.exe"
 #define MainExe    "HotA_launcher.exe"
 
 [Setup]
@@ -45,6 +45,9 @@ DefaultDirName={sd}\Games\Heroes3_HotA
 DefaultGroupName=Heroes 3 HotA
 DisableProgramGroupPage=yes
 DisableWelcomePage=no
+; Всегда спрашивать папку установки, как в оригинале. По умолчанию Inno Setup 6+
+; пропускает эту страницу, если игра уже установлена, и молча ставит в ту же папку.
+DisableDirPage=no
 ; Без запроса UAC. Игра пишет сохранения и настройки в свою папку,
 ; поэтому в Program Files её ставить не нужно (там установка и запрещена, см. [Code]).
 PrivilegesRequired=lowest
@@ -129,7 +132,7 @@ Root: HKA; Subkey: "Software\Classes\h3c_auto_file\shell\open\command"; ValueTyp
 Name: "{group}\Heroes 3 HotA"; Filename: "{app}\{#MainExe}"; WorkingDir: "{app}"
 Name: "{group}\HD Launcher"; Filename: "{app}\HD_Launcher.exe"; WorkingDir: "{app}"
 Name: "{group}\{cm:MapEditor}"; Filename: "{app}\h3hota_maped.exe"; WorkingDir: "{app}"
-Name: "{autodesktop}\Heroes 3 HotA"; Filename: "{app}\{#MainExe}"; WorkingDir: "{app}"; Tasks: createshortcut
+Name: "{autodesktop}\Heroes 3 HotA"; Filename: "{app}\HD_Launcher.exe"; WorkingDir: "{app}"; Tasks: createshortcut
 
 [Run]
 ; После установки запускаем HD Launcher
