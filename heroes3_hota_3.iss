@@ -37,7 +37,7 @@ AppVerName=HotA {#HotAVer} + HD {#HDVer}
 #else
 AppVerName=HotA {#HotAVer} + HD
 #endif
-AppPublisher=HotA Crew
+AppPublisher=HotA Repack
 UninstallDisplayName=Heroes of Might and Magic® III: Horn of the Abyss
 UninstallDisplayIcon={app}\h3hota.exe
 UninstallFilesDir={app}\{#UninstDir}
